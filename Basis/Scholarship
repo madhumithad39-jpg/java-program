@@ -1,0 +1,12 @@
+import java.util.Scanner;
+public class Scholarship {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in );
+        int tution=sc.nextInt();
+        int scholar=sc.nextInt();
+        int exam=sc.nextInt();
+        int lib=sc.nextInt();
+        int amount=tution-(tution*scholar/100)+exam+lib;
+        System.out.println(amount);
+    }
+}
