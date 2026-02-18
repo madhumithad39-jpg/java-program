@@ -1,0 +1,13 @@
+import java.util.Scanner;
+public class MobileData {
+    public static void main(String[]args){
+        Scanner sc = new Scanner(System.in);
+        float cost=sc.nextFloat();
+        float extra=sc.nextFloat();
+        float rate=sc.nextFloat();
+        float tax =sc.nextFloat();
+        float bill=cost+(extra*rate);
+        bill=bill+(bill*tax/100);
+        System.out.println(bill);
+    }
+}
