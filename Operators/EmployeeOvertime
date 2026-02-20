@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+public class EmployeeOvertime {
+    public static void main(String[] args) {
+        Scanner s1=new Scanner(System.in);
+        int Hours = s1.nextInt();
+        int Attendance = s1.nextInt();
+        if(Hours> 40 && Attendance>90){
+            System.out.println("Eligible");
+        }
+        else{
+            System.out.println("Not Eligible");
+        }
+    }
+}
