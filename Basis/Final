@@ -1,0 +1,12 @@
+import java.util.Scanner;
+public class Final {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int days = sc.nextInt();
+        int wage = sc.nextInt();
+        int over =sc.nextInt();
+        int charge = sc.nextInt();
+        int total=(days*wage)+over-charge;
+        System.out.println(total);
+    }
+}
