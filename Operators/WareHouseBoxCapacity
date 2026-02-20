@@ -1,0 +1,11 @@
+import java.util.Scanner;
+
+public class WareHouseBoxCapacity {
+    public static void main(String[] args) {
+        Scanner s=new Scanner(System.in);
+        int base=s.nextInt();
+        int levels=s.nextInt();
+        int capacity = base<<levels;
+        System.out.println("Total Capacity : "+capacity);
+    }
+}
