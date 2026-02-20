@@ -1,0 +1,14 @@
+import java.util.Scanner;
+public class College{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int reg = sc.nextInt();
+        int sponsor = sc.nextInt();
+        int stall = sc.nextInt();
+        int stage = sc.nextInt();
+        int celebrity = sc.nextInt();
+        int marketing = sc.nextInt();
+        int RemainingFund= reg+sponsor+stall-stage-celebrity-marketing;
+        System.out.println(RemainingFund);
+       }
+}
