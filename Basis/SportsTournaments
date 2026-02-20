@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+public class SportsTournaments {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int reg = sc.nextInt();
+        int broad = sc.nextInt();
+        int sponsor = sc.nextInt();
+        int prize = sc.nextInt();
+        int rent = sc.nextInt();
+        int ads = sc.nextInt();
+        int Remaining = reg+broad+sponsor-prize-rent-ads;
+        System.out.println(Remaining);
+    }
+}
