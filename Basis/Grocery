@@ -1,0 +1,12 @@
+import java.util.Scanner;
+public class Grocery {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        float sales = sc.nextFloat();
+        float dis = sc.nextFloat();
+        float gst = sc.nextFloat();
+        float rev=sales-(sales*dis/100);
+        rev=rev+(rev *gst/100);
+        System.out.println(rev);
+    }
+}
