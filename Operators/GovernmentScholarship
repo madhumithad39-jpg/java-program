@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+public class GovernmentScholarship {
+    public static void main(String[] args) {
+        Scanner s1=new Scanner(System.in);
+        int Income = s1.nextInt();
+        int Percertage = s1.nextInt();
+        if (Income<200000 && 75<=Percertage) {
+            System.out.println("Granted");
+        }
+        else{
+            System.out.println("Not Granted");
+        }
+    }
+    
+}
