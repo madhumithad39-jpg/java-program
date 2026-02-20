@@ -1,0 +1,12 @@
+import java.util.Scanner;
+public class Restaurant {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        float total=sc.nextFloat();
+        float service=sc.nextFloat();
+        float gst=sc.nextFloat();
+        float people=sc.nextFloat();
+        float bill = (total*(1+service/100)*(1+gst/100))/people;
+        System.out.println(bill);
+    }
+}
