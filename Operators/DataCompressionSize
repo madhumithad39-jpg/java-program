@@ -1,0 +1,11 @@
+import java.util.Scanner;
+
+public class DataCompressionSize {
+    public static void main(String[] args) {
+        Scanner s =new Scanner(System.in);
+        int file =s.nextInt();
+        int compression = s.nextInt();
+        int Size = file>>compression;
+        System.out.println("Compression Size : "+Size);
+    }
+}
