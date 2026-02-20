@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+public class BankLoanApproval {
+    public static void main(String[] args) {
+        Scanner s1=new Scanner(System.in);
+        int Salary = s1.nextInt();
+        int Credit = s1.nextInt();
+        if (Salary>25000&&Credit>700) {
+            System.out.println("Approval");
+        }
+        else{
+            System.out.println("Rejected");
+        }
+    }
+    
+}
