@@ -1,0 +1,13 @@
+import java.util.Scanner;
+
+public class Farm {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int yield=sc.nextInt();
+        int acres=sc.nextInt();
+        int extra =sc.nextInt();
+        int crops=sc.nextInt();
+        int Final=(yield*acres)+extra-crops;
+        System.out.println(Final);
+    }
+}
