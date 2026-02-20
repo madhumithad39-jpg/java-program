@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+public class SystemLogin {
+    public static void main(String[] args) {
+        Scanner s=new Scanner(System.in);
+        int username = s.nextInt();
+        int password =s.nextInt();
+        int accountLocked=s.nextInt();
+        if(username!=0&&password!=0&&accountLocked!=1){
+            System.out.println("Success");
+        }
+        else{
+            System.out.println("Failed");
+        }
+    }
+}
