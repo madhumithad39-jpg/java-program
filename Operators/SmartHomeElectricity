@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+public class SmartHomeElectricity {
+    public static void main(String[] args) {
+        Scanner s=new Scanner(System.in);
+        int units =s.nextInt();
+        int voltage =s.nextInt();
+        if(units>500||voltage==1){
+            System.out.println("Triggered");
+        }
+        else{
+            System.out.println("Normal Usage");
+        }
+    }
+    
+}
