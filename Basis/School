@@ -1,0 +1,14 @@
+import java.util.Scanner;
+public class School {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int distance = sc.nextInt();
+        int rate=sc.nextInt();
+        int maintenance= sc.nextInt();
+        int allow = sc.nextInt();
+        int subsidy= sc.nextInt();
+        int fee=(distance*rate)+maintenance+allow-subsidy;
+        System.out.println(fee);
+
+    }  
+}
