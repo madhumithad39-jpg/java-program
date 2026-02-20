@@ -1,0 +1,12 @@
+import java.util.Scanner;
+public class Cinema {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int ticket = sc.nextInt();
+        int snack = sc.nextInt();
+        int cost= sc.nextInt();
+        int bill= sc.nextInt();
+        int net = ticket+snack-cost-bill;
+        System.out.println(net);
+    }  
+}
