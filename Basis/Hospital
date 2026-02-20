@@ -1,0 +1,13 @@
+import java.util.Scanner;
+public class Hospital {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int room = sc.nextInt();
+        int days = sc.nextInt();
+        int cost= sc.nextInt();
+        int lab=sc.nextInt();
+        int insurance = sc.nextInt();
+        int Final=(room*days)+cost+lab-insurance;
+        System.out.println(Final);
+    }   
+}
