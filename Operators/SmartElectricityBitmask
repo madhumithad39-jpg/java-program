@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+public class SmartElectricityBitmask {
+    public static void main(String[] args) {
+        Scanner s=new Scanner(System.in);
+        int connection = s.nextInt();
+        int appliance = s.nextInt();
+        if((connection&appliance)>0){
+            System.out.println("Active");
+        }
+        else{
+            System.out.println("Inactive");
+        }
+    }
+    
+}
