@@ -1,0 +1,11 @@
+import java.util.Scanner;
+
+public class SecurityPermissionMerge {
+    public static void main(String[] args) {
+        Scanner s=new Scanner(System.in);
+        int PermissionA =s.nextInt();
+        int PermissionB =s.nextInt();
+        int code = PermissionA|PermissionB;
+        System.out.println(code);
+    }
+}
