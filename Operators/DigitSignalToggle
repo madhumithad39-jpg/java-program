@@ -1,0 +1,13 @@
+import java.util.Scanner;
+
+public class DigitSignalToggle {
+    public static void main(String[] args) {
+        Scanner s=new Scanner(System.in);
+        int Value = s.nextInt();
+        int togglemask = s.nextInt();
+        int ToggledSignal = Value^togglemask;
+        System.out.println(ToggledSignal);
+
+    }
+    
+}
