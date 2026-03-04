@@ -1,0 +1,88 @@
+import java.util.Scanner;
+
+public class SoftwareLicensePricing {
+    public static void main(String[] args) {
+        Scanner sc =new Scanner(System.in);
+        int userCount=sc.nextInt();
+        sc.nextLine();
+        String licenseType = sc.nextLine().trim();
+        String supportLevel = sc.nextLine().trim();
+        int contractYears = sc.nextInt();
+        double base = 0;
+        double discount = 0;
+        double supportFee =0;
+        double  multiyear=0;
+        if(licenseType.equals("Standard")){
+            base = 60;
+        }
+        else if(licenseType.equals("Professional")){
+            base = 120;
+        }
+        else{
+            base = 200;
+        }
+        if(userCount<=50){
+            discount = 0;
+        }
+        else if(userCount<=200){
+            discount = 15;
+        }
+        else if(userCount<=500){
+            discount = 20;
+        }
+        else if(userCount<=1000){
+            discount = 25;
+        }
+        else{
+            discount=35;
+        }
+        if(supportLevel.equals("Basic")){
+            supportFee = 10;
+        }
+        else if(supportLevel.equals("Priority")){
+            supportFee =30;
+        }
+        else{
+            supportFee=80;
+        }
+        if(contractYears==1){
+            multiyear=0;
+        }
+        else if(contractYears==2){
+            multiyear=5;
+        }
+        else if(contractYears ==3){
+            multiyear=10;
+        }
+        else{
+            multiyear=20;
+        }
+        double discountBase = base *(1-discount/100.0);
+        double annualPerUser = (discountBase+supportFee)*(1-multiyear/100.0);
+        double totalAnnual = annualPerUser*userCount;
+        double contractvalue = totalAnnual*contractYears;
+        String category;
+        if (userCount <200){
+             category = "Small Business";
+        }
+        else if(userCount<=1000){
+            category ="Mid-Market";
+        }
+        else{
+            category="Enterprise";
+        }
+        System.out.println("User Count : "+userCount);
+        System.out.println("License Type : "+licenseType);
+        System.out.println("Support Level : " +supportLevel);
+        System.out.println("Contract Duration : "+ contractYears+" years");
+        System.out.println("Base Price Per User : $ "+ base);
+        System.out.println("Volume Discount : "+ discount+"%");
+        System.out.println("Support Fee Per User : $ "+supportFee);
+        System.out.println("Multi-Year Discount : "+multiyear +"%");
+        System.out.printf("Annual Cost Per User : $ %.1f\n", annualPerUser);
+        System.out.printf("Total Annual Cost : $ %.1f\n", totalAnnual);
+        System.out.printf("Total Contract Value : $ %.1f\n", contractvalue);
+        System.out.println("Pricing Tier : "+category);
+
+    }
+}
