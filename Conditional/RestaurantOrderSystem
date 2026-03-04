@@ -1,0 +1,88 @@
+import java.util.Scanner;
+
+public class RestaurantOrderSystem {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        String orderType = sc.nextLine();
+        String loyalty = sc.nextLine();
+        double orderValue = sc.nextDouble();
+        sc.nextLine();
+        String timeSlot = sc.nextLine();
+
+        double base = 0;
+        double time = 0;
+        double service = 0;
+        String kitchen = "";
+        int prepTime = 0;
+
+        if (loyalty.equals("Gold")) {
+            base = 15;
+        } else if (loyalty.equals("Silver")) {
+            base = 10;
+        } else if (loyalty.equals("Bronze")) {
+            base = 5;
+        } else {
+            base = 0;
+        }
+
+        if (timeSlot.equals("Late-Night")) {
+            time = -5;
+        } else {
+            time = 0;
+        }
+
+        double total = base - time;
+
+        if (orderType.equals("Delivery")) {
+            service = orderValue * 0.10;
+        } else if (orderType.equals("Takeout")) {
+            service = orderValue * 0.03;
+        } else {
+            service = 0;
+        }
+
+        double discount = orderValue * (1 - total / 100);
+        double finalAmount = discount + service;
+
+        if (timeSlot.equals("Peak")) {
+            if (orderType.equals("Delivery")) {
+                kitchen = "High";
+            } else {
+                kitchen = "Medium";
+            }
+        } else if (timeSlot.equals("Regular")) {
+            kitchen = "Medium";
+        } else {
+            kitchen = "Low";
+        }
+
+        if (kitchen.equals("High")) {
+            if (orderValue > 80) {
+                prepTime = 25;
+            } else {
+                prepTime = 30;
+            }
+        } else if (kitchen.equals("Medium")) {
+            if (orderValue > 100) {
+                prepTime = 25;
+            } else {
+                prepTime = 20;
+            }
+        } else {
+            prepTime = 15;
+        }
+
+        System.out.println("Order Type: " + orderType);
+        System.out.println("Loyalty Status: " + loyalty);
+        System.out.println("Order Value: $" + orderValue);
+        System.out.println("Time Slot: " + timeSlot);
+        System.out.println("Base Discount: " + base + "%");
+        System.out.println("Time-Based Adjustment: " + time + "%");
+        System.out.println("Service Fee: $" + service);
+        System.out.println("Final Amount: $" + finalAmount);
+        System.out.println("Kitchen Priority: " + kitchen);
+        System.out.println("Estimated Prep Time: " + prepTime + " minutes");
+    }
+}
