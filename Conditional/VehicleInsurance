@@ -1,0 +1,89 @@
+import java.util.Scanner;
+
+public class VehicleInsurance {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int DriverAge = sc.nextInt();
+        sc.nextLine();
+        String vehicleType = sc.nextLine();
+        String drivingRecord = sc.nextLine();
+        String coverageLevel = sc.nextLine();
+        double Base = 0;
+        double AgeFactor =0;
+        double VehicleFactor =0;
+        double Record =0;
+        if(coverageLevel.equals("Basic")){
+            Base = 500;
+        }
+        else if(coverageLevel.equals("Standard")){
+            Base =800;
+        }
+        else{
+            Base = 1500;
+        }
+        if (DriverAge>=16 && DriverAge<=21) {
+            AgeFactor = 1.8;
+        }
+        else if(DriverAge >=22 && DriverAge<=25){
+            AgeFactor = 1.5;
+        }
+        else if(DriverAge>=26 && DriverAge <=40){
+            AgeFactor = 1.0;
+        }
+        else if(DriverAge>=41 && DriverAge <=60){
+            AgeFactor =0.9;
+        }
+        else{
+            AgeFactor=1.1;
+        }
+        if (vehicleType.equals("Sedan")) {
+            VehicleFactor = 1.0;
+        }
+        else if(vehicleType.equals("SUV")){
+            VehicleFactor =1.2;
+        }
+        else if(vehicleType.equals("Sports")){
+            VehicleFactor = 1.5;
+        }
+        else{
+            VehicleFactor =1.1;
+        }
+        if(drivingRecord.equals("Clean")){
+            Record =-10;
+        }
+        else if(drivingRecord.equals("Minor-Violations")){
+            Record = 25;
+        }
+        else{
+            Record=50;
+        }
+        double adjustedPremium = Base *AgeFactor*VehicleFactor;
+        double FinalPremium = adjustedPremium*(1+Record/100);
+        double MonthlyPremium = FinalPremium/12;
+        double AnnualPremium = FinalPremium;
+        String riskCategory;
+        if (Record==50||AgeFactor==1.8) {
+            riskCategory = "Very High";
+        }
+        else if(AgeFactor==1.5){
+            riskCategory = "High";
+        }
+        else if(AgeFactor ==1.1){
+            riskCategory ="Medium";
+        }
+        else{
+            riskCategory="Low";
+        }
+        System.out.println("Driver Age : "+DriverAge);
+        System.out.println("Vehicle type : "+vehicleType);
+        System.out.println("Driving Record : " + drivingRecord);
+        System.out.println("Coverage Level : "+coverageLevel);
+        System.out.println("Base Premium : $ "+Base);
+        System.out.println("Age Factor :"+ AgeFactor + "x");
+        System.out.println("Vehicle Risk Factor : "+ VehicleFactor + "x");
+        System.out.println("Record Adjustment : "+ Record + "%");
+        System.out.println("Monthly Premium :  $ "+ Math.round(MonthlyPremium*100.0)/100.0);
+        System.out.println("Annual Premium : $ "+Math.round(AnnualPremium*100.0)/100.0);
+        System.out.println("Risk Category : "+riskCategory);
+    } 
+}
