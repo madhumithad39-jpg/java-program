@@ -1,0 +1,95 @@
+import java.util.Scanner;
+
+public class GymMembershipPricing {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String membership = sc.nextLine().trim();
+        int contractMonths = sc.nextInt();
+        sc.nextLine();
+        String accessLevel=sc.nextLine().trim();
+        String addOns = sc.nextLine().trim();
+        double base =0;
+        double discount =0;
+        double AccessFee =0;
+        double AddonFee =0;
+        if(membership.equals("Basic")){
+            base = 40;
+        }
+        else if(membership.equals("Premium")){
+            base = 80;
+        }
+        else if(membership.equals("Elite")){
+            base = 120;
+        }
+        else{
+            base = 150;
+        }
+        if(contractMonths==1){
+            discount =0;
+        }
+        else if(contractMonths ==6){
+            discount =10;
+        }
+        else if(contractMonths == 12){
+            discount = 15;
+        }
+        else{
+            discount = 25;
+        }
+        if(accessLevel.equals("Single-Location")){
+            AccessFee =0;
+        }
+        else if(accessLevel.equals("Regional")){
+            AccessFee = 20;
+        }
+        else {
+            AccessFee = 50;
+        }
+        if(addOns.equals("None")){
+            AddonFee = 0;
+        }
+        else if(addOns.equals("Personal-Training")){
+            AddonFee = 100;
+        }
+        else if(addOns.equals("Classes")){
+            AddonFee = 50;
+        }
+        else{
+            AddonFee =200;
+        }
+        double discountBase = base*(1-discount/100);
+        double monthlyTotal = discountBase+AccessFee+AddonFee;
+        double contractTotal = monthlyTotal*contractMonths;
+        double Total = (base+AccessFee+AddonFee)*contractMonths-contractTotal;
+        String category;
+        if (membership.equals("Basic")) {
+            category = "Budget";
+        } 
+        else if (membership.equals("VIP")) {
+            category = "Luxury";
+        } 
+        else if (membership.equals("Premium")) {
+            if (monthlyTotal >= 150) {
+                category = "Premium";
+            }   
+            else {
+                category = "Standard";
+            }
+        } 
+        else {
+            category = "Premium";
+        }
+        System.out.println("Membership Tier : "+ membership);
+        System.out.println("Contract Lenght :"+contractMonths + " months");
+        System.out.println("Access Level:"+accessLevel);
+        System.out.println("Add-Ons :"+addOns);
+        System.out.println("Base Monthly Fee : $ "+base);
+        System.out.println("Contract Discount : "+(int)discount+ "%");
+        System.out.println("Access Fee : $ "+AccessFee);
+        System.out.println("Add-On Fee: $ "+AddonFee);
+        System.out.println("Monthly Total: $"+monthlyTotal);
+        System.out.println("Contract total : $" + contractTotal);
+        System.out.println("Saving  vs Month-to-Month : $ "+Total);
+        System.out.println("Membership Category : "+category);
+    }
+}
