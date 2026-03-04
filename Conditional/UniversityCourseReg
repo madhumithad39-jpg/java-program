@@ -1,0 +1,92 @@
+import java.util.Scanner;
+
+public class UniversityCourseReg {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        //sc.nextLine();
+        String student=sc.nextLine().trim();
+        int creditHours = sc.nextInt();
+        sc.nextLine();
+        String programType = sc.nextLine().trim();
+        String residency =sc.nextLine().trim();
+        double basetuition = 0;
+        double residencymultiplier =0;
+        double programfee =0;
+        double activityfee =0;
+        if(programType.equals("Undergraduate")){
+            basetuition = 350;
+        }
+        else if(programType.equals("Graduate")){
+            basetuition = 550;
+        }
+        else{
+            basetuition=800;
+        }
+        if(residency.equals("In-State")){
+            residencymultiplier = 1.0;
+        }
+        else if(residency.equals("Out-of-State")){
+            residencymultiplier = 2.5;
+        }
+        else{
+            residencymultiplier =3.0;
+        }
+        if(student.equals("Full-Time")){
+            if(programType.equals("Undergraduate")){
+                programfee = 500;
+            }
+            else if(programType.equals("Graduate")){
+                programfee = 750;
+            }
+            else{
+                programfee=1200;
+            }
+        }
+        else if(student.equals("Part-Time")){
+            if(programType.equals("Undergraduate")){
+                programfee =300;
+            }
+            else if(programType.equals("Graduate")){
+                programfee = 750;
+            }
+            else{
+                programfee=900;
+            }
+        }
+        else{
+            programfee=150;
+        }
+        if(student.equals("Full-Time")){
+            activityfee=200;
+        }
+        else if(student.equals("Part-Time")){
+            activityfee = 100;
+        }
+        else{
+            activityfee=50;
+        }
+        double tuitionCost = creditHours *basetuition*residencymultiplier;
+        double totalFee= tuitionCost+programfee+activityfee;
+        String Category ;
+        if(student.equals("Continuing-Education")){
+            Category = "Reduced";
+        }
+        else if(residency.equals("Out-of-State")||residency.equals("International")){
+            Category ="Premium";
+        }
+        else{
+            Category="Standard";
+        }
+        System.out.println("Student Status: " + student);
+        System.out.println("Credit Hours: " + creditHours);
+        System.out.println("Program Type: " + programType);
+        System.out.println("Residency: " + residency);
+        System.out.println("Base Tuition Per Credit: $" + basetuition);
+        System.out.println("Residency Multiplier: " + residencymultiplier + "x");
+        System.out.println("Program Fee: $" + programfee);
+        System.out.println("Student Activity Fee: $" + activityfee);
+        System.out.println("Total Registration Fee: $" + totalFee);
+        System.out.println("Fee Category: " + Category);
+
+    }
+}
