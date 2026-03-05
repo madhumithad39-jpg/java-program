@@ -1,0 +1,86 @@
+import java.util.Scanner;
+
+public class SmartHomeEnergy{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String timeOfDay = sc.nextLine();
+        double power = sc.nextDouble();
+        double renewable = sc.nextDouble();
+        sc.nextLine();
+        String tier = sc.nextLine();
+        double baseRate = 0;
+        double multiplier = 1;
+        double credit;
+        double totalCost;
+        double savings = 0;
+        String recommendation;
+        if (tier.equalsIgnoreCase("Basic")){
+            baseRate = 0.18;
+        }
+        else if (tier.equalsIgnoreCase("Time-of-Use")){
+            baseRate = 0.15;
+        }
+        else{
+            baseRate = 0.12;
+        }
+
+        if (timeOfDay.equalsIgnoreCase("Peak")){
+            if (tier.equalsIgnoreCase("Time-of-Use")){
+                multiplier = 1.8;
+            }
+            else if (tier.equalsIgnoreCase("Premium-Green")){
+                multiplier = 1.5;
+            }
+            else{
+                multiplier = 1.0;
+            }
+        }
+        else if (timeOfDay.equalsIgnoreCase("Off-Peak")){
+            if (tier.equalsIgnoreCase("Time-of-Use")){
+                multiplier = 0.8;
+            }
+            else{
+                multiplier = 1.0;
+            }
+        }
+        else{
+            if (tier.equalsIgnoreCase("Premium-Green")){
+                multiplier = 0.6;
+            }
+            else{
+                multiplier = 0.5;
+            }
+        }
+        credit = (power * renewable / 100) * baseRate;
+        totalCost = (power * baseRate * multiplier) - credit;
+        if (totalCost < 0){
+            totalCost = 0;
+        }
+
+        if (timeOfDay.equalsIgnoreCase("Peak") && renewable < 30){
+            recommendation = "Shift high-power appliances to Off-Peak hours";
+            savings = power * baseRate * (multiplier - 0.8);
+        }
+        else if (renewable >= 60){
+            recommendation = "Excellent! Maximize appliance use during this period";
+        }
+        else if (tier.equalsIgnoreCase("Basic")){
+            recommendation = "Consider upgrading to Time-of-Use plan";
+            savings = power * baseRate * 0.2;
+        }
+        else{
+            recommendation = "Good timing! Consider increasing renewable capacity";
+        }
+
+        System.out.println("Time of Day: " + timeOfDay);
+        System.out.println("Power Consumption: " + power + " kWh");
+        System.out.println("Renewable Energy: " + renewable + "%");
+        System.out.println("Rate Tier: " + tier);
+        System.out.println("Base Rate: $" + baseRate + "/kWh");
+        System.out.println("Rate Multiplier: " + multiplier + "x");
+        System.out.println("Renewable Credit: $" + Math.round(credit * 100.0) / 100.0);
+        System.out.println("Total Cost: $" + Math.round(totalCost * 100.0) / 100.0);
+        System.out.println("Optimization Recommendation: " + recommendation);
+        System.out.println("Potential Savings: $" + Math.round(savings * 100.0) / 100.0);
+    }
+}
