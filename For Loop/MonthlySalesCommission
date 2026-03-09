@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class MonthlySalesCommission {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+
+            String name = sc.next();
+            double salesAmount = sc.nextDouble();
+
+            int rate;
+            double commission;
+            double bonus = 0;
+
+            if (salesAmount <= 40000)
+                rate = 5;
+            else if (salesAmount <= 80000)
+                rate = 8;
+            else if (salesAmount <= 100000)
+                rate = 10;
+            else if (salesAmount <= 150000)
+                rate = 12;
+            else
+                rate = 15;
+
+            commission = salesAmount * rate / 100;
+
+            if (salesAmount >= 150000)
+                bonus = 3000;
+            else if (salesAmount >= 100000)
+                bonus = 2000;
+
+            double total = commission + bonus;
+
+            System.out.println("Sales Rep: " + name);
+            System.out.println("Sales Amount: $" + salesAmount);
+            System.out.println("Commission Rate: " + rate + "%");
+            System.out.println("Commission Earned: $" + commission);
+            System.out.println("Bonus: $" + bonus);
+            System.out.println("Total Payout: $" + total);
+        }
+    }
+}
