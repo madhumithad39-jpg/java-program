@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class RestaurantOrderProcess {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int totalitem=0;
+        double subTotal =0;
+        for(int i=0;i<n;i++){
+            String itemname = sc.next();
+            double Price = sc.nextDouble();
+            int Quantity = sc.nextInt();
+            double SubTotal = Price*Quantity;
+            totalitem = totalitem+Quantity;
+            subTotal = subTotal+SubTotal;
+            System.out.println("Item : "+itemname);
+            System.out.println("Price : $ "+Price + "x"+Quantity);
+            System.out.println("Sub Total : $ "+SubTotal); 
+        }
+        double tax = subTotal *0.08;
+        double ServiceCharge = subTotal *0.10;
+        double GrandTotal = subTotal+tax+ServiceCharge;
+        System.out.println("Total Items : "+totalitem);
+        System.out.println("Sub Total : $ "+subTotal);
+        System.out.println("Tax(8%) : $" + tax);
+        System.out.println("Service Charge (10%) : $ "+ ServiceCharge);
+        System.out.println("Grand Total : $ "+GrandTotal);
+    }
+}
