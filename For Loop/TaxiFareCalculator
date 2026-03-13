@@ -1,0 +1,59 @@
+import java.util.Scanner;
+
+public class TaxiFareCalculator {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int N = sc.nextInt();
+
+        double baseFare = 3.00;
+        double totalDistance = 0;
+        double totalRevenue = 0;
+
+        for (int i = 1; i <= N; i++) {
+
+            double distance = sc.nextDouble();
+            String timeOfDay = sc.next();
+
+            double distanceCharge = distance * 1.00;
+            double surcharge = 0;
+
+            if (timeOfDay.equalsIgnoreCase("Morning")) {
+                surcharge = 0;
+            } 
+            else if (timeOfDay.equalsIgnoreCase("Afternoon")) {
+                surcharge = 0;
+            } 
+            else if (timeOfDay.equalsIgnoreCase("Evening")) {
+                surcharge = 3;
+            } 
+            else if (timeOfDay.equalsIgnoreCase("Night")) {
+                surcharge = 5;
+            }
+
+            double totalFare = baseFare + distanceCharge + surcharge;
+
+            totalDistance += distance;
+            totalRevenue += totalFare;
+
+            System.out.println("Ride " + i);
+            System.out.println("Distance : " + distance + " km");
+            System.out.println("Time : " + timeOfDay);
+            System.out.println("Base Fare : $" + baseFare);
+            System.out.println("Distance Charge : $" + distanceCharge);
+            System.out.println("Time Surcharge : $" + surcharge);
+            System.out.println("Total Fare : $" + totalFare);
+        }
+
+        double averageFare = totalRevenue / N;
+
+        System.out.println("After all rides");
+        System.out.println("Total ride : " + N);
+        System.out.println("Total Distance : " + totalDistance + " km");
+        System.out.println("Total Revenue : $" + totalRevenue);
+        System.out.println("Average Fare : $" + averageFare);
+
+        sc.close();
+    }
+}
