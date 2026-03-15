@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class OnlineQuizScoreCal {
+    public static void main(String[] args) {
+        Scanner s1=new Scanner(System.in);
+        int n = s1.nextInt();
+        int passCount = 0;
+        int failCount = 0;
+        int highestScore =Integer.MIN_VALUE;
+        int totalScore = 0;
+        for(int i=0;i<n;i++){
+            String studentName = s1.next();
+            int correct =s1.nextInt();
+            int wrong = s1.nextInt();
+            int unattempted = s1.nextInt();
+            int score =(correct*4)-(wrong*3)+(unattempted*0);
+            String result ;
+            if(score>=32){
+                result ="Pass";
+                passCount++;
+            }
+            else{
+                result="Fail";
+                failCount++;
+            }
+            highestScore = Math.max(highestScore, score);
+            totalScore = totalScore+score;
+            System.out.println("Student : "+studentName);
+            System.out.println("Correct : "+correct);
+            System.out.println("Wrong : "+wrong);
+            System.out.println("Unattermpted: " + unattempted);
+            System.out.println("Score: " + score);
+            System.out.println("Result: " + result);
+        }
+        double average = (double) totalScore / n;
+
+        System.out.println("Total Students: " + n);
+        System.out.println("Pass Count: " + passCount);
+        System.out.println("Fail Count: " + failCount);
+        System.out.println("Class Average: " + average);
+        System.out.println("Highest Score: " + highestScore);
+        }
+    }
+
