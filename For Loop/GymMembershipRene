@@ -1,0 +1,70 @@
+import java.util.Scanner;
+
+public class GymMembershipRene {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int urgentCount =0;
+        double totalRevenue =0;
+        for(int i=0;i< n ;i++){
+            String memberName =sc.next();
+            String membershipType =sc.next();
+            int daysUntilExp =sc.nextInt();
+            double renewalFee =0;
+            double discount =0;
+            if(membershipType.equalsIgnoreCase("Basic")){
+                renewalFee = 50;
+            }
+            else if(membershipType.equalsIgnoreCase("Premium")){
+                renewalFee = 100;
+            }
+            else if(membershipType.equalsIgnoreCase("VIP")){
+                renewalFee = 200;
+            }
+            if(daysUntilExp >=45){
+                discount = 20;
+            }
+            else if(daysUntilExp >= 30){
+                discount = 15;
+            }
+            else if(daysUntilExp >= 15){
+                discount = 10;
+            }
+            else {
+                discount =0;
+            }
+            double finalFee = renewalFee *(1-discount/100);
+            String priority;
+            if (daysUntilExp < 10) {
+                priority = "Urgent";
+                urgentCount++;
+            } 
+            else if (daysUntilExp <= 30) {
+                priority = "High";
+            } 
+            else {
+                priority = "Normal";
+            }
+
+            totalRevenue += finalFee;
+
+            // Output for each member
+            System.out.println("Member: " + memberName);
+            System.out.println("Membership: " + membershipType);
+            System.out.println("Days Until Expiry: " + daysUntilExp);
+            System.out.println("Renewal Fee: $" + renewalFee);
+            System.out.println("Discount: " + discount + "%");
+            System.out.println("Final Fee: $" + finalFee);
+            System.out.println("Priority: " + priority);
+        }
+
+        double averageFee = totalRevenue / n;
+
+        // Summary output
+        System.out.println("Total Members: " + n);
+        System.out.println("Urgent Renewals: " + urgentCount);
+        System.out.println("Total Renewal Revenue: $" + totalRevenue);
+        System.out.println("Average Renewal Fee: $" + averageFee);
+
+    }
+}
